@@ -1,0 +1,32 @@
+name = "mynewwebsite"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Cloudflare Workers settings
+workers_dev = true
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "websitedb"
+database_id = "3c0531e3-93b4-4d7a-914b-388f487a7a4a"
+migrations_dir = "./node_modules/@sonicjs-cms/core/migrations"
+
+# R2 Bucket for media storage
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "websitemedia"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "development"
+
+# Production environment
+[env.production]
+name = "sonicjs-app-production"
+vars = { ENVIRONMENT = "production" }
+
+# Observability
+[observability]
+enabled = true
